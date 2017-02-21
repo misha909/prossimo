@@ -1,0 +1,26 @@
+projects:
+    type:     rest
+    resource: @AppBundle/Controller/Rest/ProjectsController.php
+
+project_files:
+    type:     rest
+    parent:   projects
+    resource: @AppBundle/Controller/Rest/ProjectFilesController.php
+
+project_windows:
+    type:     rest
+    parent:   projects
+    resource: @AppBundle/Controller/Rest/ProjectUnitsController.php
+
+project_accessory:
+    type:     rest
+    parent:   projects
+    resource: @AppBundle/Controller/Rest/ProjectAccessoriesController.php
+
+profile:
+    type: rest
+    resource: @AppBundle/Controller/Rest/ProfilesController.php
+
+filling_type:
+    type: rest
+    resource: @AppBundle/Controller/Rest/FillingTypesController.php

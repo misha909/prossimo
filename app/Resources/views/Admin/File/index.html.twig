@@ -1,0 +1,100 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Project: #{{ parent_entity.id }} ({{ parent_entity }}) /
+                {{ 'files.pages.index' |trans({}, 'AppBundle') }} <small>List</small>
+            </h1>
+        </div>
+        <!-- /.col-lg-12 -->
+        <div class="col-lg-12">
+            {% include '::_flash.html.twig' %}
+        </div>
+    </div>
+
+    <!-- Project section navigation -->
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{ path('admin_projects') }}" title="{{ 'projects.description' |trans({}, 'AppBundle') }}"><i class="fa fa-list fa-fw"></i> {{ 'projects.title' |trans({}, 'AppBundle') }}</a></li>
+                <li class="active">{{ 'files.title' |trans({}, 'AppBundle') }}</li>
+            </ol>
+        </div>
+    </div><!-- /Project section navigation -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form name="sync_form" action="{{ path('admin_project_files_sync', {'project_id': parent_entity.id}) }}" method="post">
+                        {#<label>#}
+                            {#<input type="checkbox" name="sync_only_open_deals" checked="checked"> Only open deals#}
+                        {#</label>#}
+                        <button type="submit" class="btn btn-info">
+                            <i class="glyphicon glyphicon-ok-sign"></i>
+                            {{ 'actions.sync' |trans({}, 'AppBundle') }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="records_list table table-striped">
+                <thead>
+                <tr>
+                    <th>{{ 'files.fields.id' |trans({}, 'Entities') }}</th>
+                    <th>{{ 'files.fields.pipedrive_id' |trans({}, 'Entities') }}</th>
+                    <th>{{ 'files.fields.name' |trans({}, 'Entities') }}</th>
+                    <th>{{ 'files.fields.type' |trans({}, 'Entities') }}</th>
+                    <th>{{ 'files.fields.url' |trans({}, 'Entities') }}</th>
+                    <th>{{ 'files.fields.project' |trans({}, 'Entities') }}</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>{{ entity.getId() }}</td>
+                        <td>
+                            {% if entity.getSyncDatetime %}
+                                <i class="glyphicon glyphicon-ok-sign text-info" title="Synced with Pipedrive at {{ entity.getSyncDatetime | date("m/d/Y h:i:s") }}"></i>
+                            {% endif %}
+                            {{ entity.getPipedriveId }}
+                        </td>
+                        <td>{{ entity.getName() }}</td>
+                        <td>{{ entity.getType() }}</td>
+                        <td>{{ entity.getUrl() }}</td>
+                        <td>{{ entity.getProject() }}</td>
+                        <td>
+                            {#<a href="#">#}
+                                {#<i class="glyphicon glyphicon-pencil"></i>&nbsp;{{ 'actions.edit' |trans({}, 'AppBundle') }}#}
+                            {#</a>#}
+
+                            <a class="btn btn-info btn-sm" href="{{ entity.getUrl() }}?api_token={{ api_token }}"
+                               title="{{ 'actions.download' |trans({}, 'AppBundle') }} {{ entity.getName() }}" target="_blank">
+                                <i class="glyphicon glyphicon-download"></i>&nbsp;{{ 'actions.download' |trans({}, 'AppBundle') }}
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                                <i class="glyphicon glyphicon-remove"></i>&nbsp;###{{ 'actions.delete' |trans({}, 'AppBundle') }}
+                            </a>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            {#<a href="#" class="btn btn-success">#}
+                {#<i class="glyphicon glyphicon-plus-sign"></i>#}
+                {#{{ 'actions.create' |trans({}, 'AppBundle') }}#}
+            {#</a>#}
+
+        </div>
+    </div>
+
+{% endblock %}

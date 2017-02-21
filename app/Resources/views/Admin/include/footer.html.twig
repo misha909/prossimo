@@ -1,0 +1,17 @@
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 text-right">
+                <p>
+                    <strong>Prossimo.us</strong> running on Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <p>
+                    &copy; Prossimo LLC<br />
+                    {% if date() > date('2016-01-01T00:00:00') %}2015&ndash;{%  endif %}{{ 'now'|date('Y') }} All rights reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

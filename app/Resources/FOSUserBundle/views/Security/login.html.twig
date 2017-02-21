@@ -1,0 +1,49 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title %}Prossimo login{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/signin.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center"><span>Welcome to</span> Prossimo<br /><small>Please define your credentials</small></h1>
+
+    {% block fos_user_content %}
+        {% if error %}
+            <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+        {% endif %}
+
+        <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            <label for="username" class="sr-only">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" />
+
+            <label for="password" class="sr-only">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="password" id="password" name="_password" required="required" class="form-control"  />
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+                </label>
+            </div>
+
+            <button type="submit" id="_submit" name="_submit" class="btn btn-lg btn-primary btn-block" >{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+        </form>
+    {% endblock fos_user_content %}
+{% endblock %}

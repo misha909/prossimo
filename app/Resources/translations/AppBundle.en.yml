@@ -1,0 +1,41 @@
+actions:
+    accept: OK
+    back_to_list: 'Back to list'
+    cancel: Cancel
+    confirm_delete: 'Confirm Delete'
+    create: Create
+    delete: Delete
+    export: Export
+    update: Update
+    edit: Edit
+    show: Show
+    sync: Synchronize
+    download: Download
+
+dashboard:
+    title: Dashboard
+    description: 'Control panel'
+
+setting:
+    title: Settings
+    description: 'Application settings'
+
+backup:
+    title: Backup
+    description: 'Application backup'
+
+projects:
+    title: Projects
+    description: ''
+    pages:
+        index: 'Projects'
+        remove_conform: 'Comfirm remove project'
+
+files:
+    title: 'Project files'
+    description: 'Files associated with project'
+    pages:
+        index: 'Files'
+
+errors:
+    item_in_use: 'Item in use and could not be deleted'

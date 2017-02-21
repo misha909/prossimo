@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1 class="title">Project {{ 'project.pages.new.header'|trans({}, 'AppBundle') }}</h1>
+
+    {%  if (form is defined) %}
+        <form action="{{ url('post_projects') }}" method="POST" {{ form_enctype(form) }}>
+
+            {{ form_widget(form) }}
+
+            <input type="submit" value="{% trans from 'AppBundle' %}project.pages.new.submit{% endtrans %}">
+        </form>
+    {% endif %}
+
+{% endblock %}

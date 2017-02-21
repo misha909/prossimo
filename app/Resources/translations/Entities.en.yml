@@ -1,0 +1,29 @@
+
+
+projects:
+    title: Projects
+    fields:
+        id: Id
+        pipedrive_id: 'Pipedrive id'
+        client_name: 'Client name'
+        client_company_name: 'Client company name'
+        client_phone: 'Client phone'
+        client_email: 'Client email'
+        client_address: 'Client address'
+        project_name: 'Project name'
+        project_address: 'Project address'
+        files: Files
+        units: Units
+        accessories: Accessories
+        sync_datetime: 'Synchronized at'
+
+files:
+    title: 'Project files'
+    fields:
+        id: Id
+        pipedrive_id: 'Pipedrive id'
+        name: Name
+        type: Type
+        url: Url
+        project: Project
+        sync_datetime: 'Synchronized at'

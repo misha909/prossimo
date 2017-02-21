@@ -1,0 +1,10 @@
+project:
+  pages:
+    new:
+      header: 'New project'
+      submit: 'Create project'
+  fields:
+    id: Id
+  api:
+    doc:
+      link: 'API documentaion'

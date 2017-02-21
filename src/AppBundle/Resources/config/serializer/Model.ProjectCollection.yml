@@ -1,0 +1,34 @@
+AppBundle\Model\ProjectCollection:
+  exclusion_policy: ALL
+  xml_root_name: projects
+  properties:
+    projects:
+      expose: true
+      type: array<AppBundle\Entity\Project>
+      xml_list:
+        inline: true
+        entry_name: project
+    offset:
+      expose: true
+      type: integer
+      xml_attribute: true
+    limit:
+      expose: true
+      type: integer
+      xml_attribute: true
+  relations:
+    -
+      rel: self
+      href:
+        route: get_projects
+        absolute: true
+    -
+      rel: note
+      href:
+        route: get_project
+        absolute: true
+        generator: templated_uri
+        parameters:
+          id: "{id}"
+      attributes:
+        templated: true

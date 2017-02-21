@@ -1,0 +1,33 @@
+{% extends ':Admin:layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                {{ 'backup.title' |trans({}, 'AppBundle') }} <small>{{ 'backup.description' |trans({}, 'AppBundle') }}</small>
+                <a class="btn pull-right" href="{{ path('admin_backup_settings') }}"><i class="glyphicon glyphicon-cog"></i> Settings</a>
+            </h1>
+        </div>
+        <!-- /.col-lg-12 -->
+
+        <div class="col-lg-12">
+            {% include '::_flash.html.twig' %}
+        </div>
+    </div>
+
+
+    <!-- Backup section navigation -->
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{ path('admin_backup') }}" title="{{ 'backup.description' |trans({}, 'AppBundle') }}"><i class="fa fa-database fa-fw"></i> {{ 'backup.title' |trans({}, 'AppBundle') }}</a></li>
+                <li class="active">Processing backup operation</li>
+            </ol>
+        </div>
+    </div><!-- /Backup section navigation -->
+
+
+    <div class="row">
+        <h2>Wail while backup process finished</h2>
+    </div>
+{% endblock %}
